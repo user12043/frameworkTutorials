@@ -20,8 +20,21 @@
 
   <!--If you want to use a specific function to create bean (with CustomModelCreator)-->
   <!--First create the factory bean-->
-  <bean id="customModelCreator" class="ogr.user12043.tutorials.spring.context.CustomModelCreator"/>
+  <bean id="personFactoryBean" class="ogr.user12043.tutorials.spring.context.CustomModelCreator"/>
 
   <!--Then create the bean with factory bean. This bean will be created using CustomModelCreator.createPerson()-->
-  <bean id="customCreatedPerson" factory-bean="customModelCreator" factory-method="createPerson"/>
+  <bean id="personCreatedWithSpecificMethod" factory-bean="personFactoryBean" factory-method="createPerson"/>
+
+
+  <!--A bean can be created with constructor argument-->
+  <bean id="personCreatedWithConstructor" class="ogr.user12043.tutorials.spring.context.model.Person">
+    <constructor-arg value="Person created with constructor"/>
+    <constructor-arg value="32"/>
+  </bean>
+
+  <bean id="personCreatedWithConstructor2" class="ogr.user12043.tutorials.spring.context.model.Person">
+    <!--It is better to give the argument's type-->
+    <constructor-arg value="Person created with constructor 2" type="java.lang.String"/>
+    <constructor-arg value="63" type="int"/>
+  </bean>
 </beans>

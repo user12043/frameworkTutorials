@@ -11,7 +11,7 @@
 
   <artifactId>tutorials-spring-context</artifactId>
 
-  <name>tutorials-spring-context</name>
+  <name>spring-context</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
