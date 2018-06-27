@@ -6,8 +6,22 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
   <bean id="person1" class="ogr.user12043.tutorials.spring.context.model.Person">
-    <property name="name" value="personName1"/>
+    <property name="name" value="Person 1"/>
     <property name="age" value="10"/>
   </bean>
 
+  <!--To use nested objects, define ref-->
+  <bean id="company1" class="ogr.user12043.tutorials.spring.context.model.Company">
+    <property name="name" value="Company 1"/>
+    <property name="owner" ref="person1"/>
+  </bean>
+
+  <import resource="other-beans.xml"/>
+
+  <!--If you want to use a specific function to create bean (with CustomModelCreator)-->
+  <!--First create the factory bean-->
+  <bean id="customModelCreator" class="ogr.user12043.tutorials.spring.context.CustomModelCreator"/>
+
+  <!--Then create the bean with factory bean. This bean will be created using CustomModelCreator.createPerson()-->
+  <bean id="customCreatedPerson" factory-bean="customModelCreator" factory-method="createPerson"/>
 </beans>

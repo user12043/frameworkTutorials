@@ -4,10 +4,9 @@ package ogr.user12043.tutorials.spring.context.model;
  * Created by user12043 on 27.06.2018
  * Part of project: tutorials
  */
-public class Person {
+public class Company {
     private String name;
-    private int age;
-
+    private Person owner;
 
     public String getName() {
         return name;
@@ -17,16 +16,16 @@ public class Person {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
+    public Person getOwner() {
+        return owner;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setOwner(Person owner) {
+        this.owner = owner;
     }
 
     @Override
     public String toString() {
-        return "Person name: " + this.name + "\nAge:" + this.age;
+        return "Company Name: " + name + "\n" + "Owner\n\tPerson name:" + owner.getName() + "\n\tAge: " + owner.getAge();
     }
 }
