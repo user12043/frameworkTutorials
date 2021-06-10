@@ -15,12 +15,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
     <project.main-class>ogr.user12043.tutorials.jpaInheritance.Main</project.main-class>
-    <hibernate-version>5.3.2.Final</hibernate-version>
-    <h2database-version>1.4.197</h2database-version>
-    <exec-plugin-version>1.6.0</exec-plugin-version>
   </properties>
 
   <dependencies>
@@ -46,7 +41,7 @@
         <version>${exec-plugin-version}</version>
         <configuration>
           <workingDirectory>${project.basedir}</workingDirectory>
-          <mainClass>ogr.user12043.tutorials.jpaInheritance.Main</mainClass>
+          <mainClass>${project.main-class}</mainClass>
         </configuration>
       </plugin>
     </plugins>

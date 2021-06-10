@@ -18,9 +18,15 @@
   <!--<url>http://www.example.com</url>-->
 
   <properties>
+    <java.version>11</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+    <exec-plugin-version>3.0.0</exec-plugin-version>
+    <hibernate-version>5.5.0.Final</hibernate-version>
+    <h2database-version>1.4.200</h2database-version>
+    <spring-boot-version>2.5.0</spring-boot-version>
+    <spring-web-version>5.3.8</spring-web-version>
   </properties>
 
   <dependencies>
