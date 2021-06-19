@@ -4,6 +4,8 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
+  <!--       default-lazy-init="true">-->
+  <!--  All beans will be lazy-initialized by default if you put line above-->
 
   <bean id="person1" class="ogr.user12043.tutorials.spring.context.model.Person">
     <property name="name" value="Person 1"/>
@@ -14,6 +16,16 @@
   <bean id="company1" class="ogr.user12043.tutorials.spring.context.model.Company">
     <property name="name" value="Company 1"/>
     <property name="owner" ref="person1"/>
+    <property name="employees">
+      <list value-type="ogr.user12043.tutorials.spring.context.model.Person">
+        <bean class="ogr.user12043.tutorials.spring.context.model.Person">
+          <property name="name" value="employee1"/>
+        </bean>
+        <bean class="ogr.user12043.tutorials.spring.context.model.Person">
+          <property name="name" value="employee2"/>
+        </bean>
+      </list>
+    </property>
   </bean>
 
   <import resource="other-beans.xml"/>
@@ -32,7 +44,8 @@
     <constructor-arg value="32"/>
   </bean>
 
-  <bean id="personCreatedWithConstructor2" class="ogr.user12043.tutorials.spring.context.model.Person">
+  <!-- Lazy initialization inits the objects on access, not on startup  -->
+  <bean id="personCreatedWithConstructor2" class="ogr.user12043.tutorials.spring.context.model.Person" lazy-init="true">
     <!--It is better to give the argument's type-->
     <constructor-arg value="Person created with constructor 2" type="java.lang.String"/>
     <constructor-arg value="63" type="int"/>

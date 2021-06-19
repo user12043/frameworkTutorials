@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+  <!-- Notice the line starting with xlms:p above. This provides possibility of definition like p:name -->
+  <bean id="otherPerson" class="ogr.user12043.tutorials.spring.context.model.Person" p:name="Other Person" p:age="12"/>
 
-  <bean id="otherPerson" class="ogr.user12043.tutorials.spring.context.model.Person">
-    <property name="name" value="Other Person"/>
-    <property name="age" value="12"/>
-  </bean>
+  <!-- Notice the line starting with xlms:c above. This provides possibility of definition like c:name or c:_0 -->
+  <bean id="anotherPerson" class="ogr.user12043.tutorials.spring.context.model.Person" c:_0="Another Person" c:_1="22"/>
+
+  <!-- Define alias to refer same bean by another name -->
+  <alias name="otherPerson" alias="sameOtherPerson"/>
 
 </beans>

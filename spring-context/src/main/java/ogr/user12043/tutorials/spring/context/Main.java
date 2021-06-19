@@ -16,7 +16,13 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        getFromXML();
+        ApplicationContext xmlContext = getFromXML();
+        // Can use GenericApplicationContext if you will load multiple contexts from different sources
+        /*
+        GenericApplicationContext context = new GenericApplicationContext();
+        new XmlBeanDefinitionReader(context).loadBeanDefinitions("services.xml", "daos.xml");
+        context.refresh();
+        */
     }
 
     //<editor-fold desc="Using XML configuration" defaultstate="collapsed">
@@ -28,7 +34,7 @@ public class Main {
      *
      * <i>Note: The xml files must be in your classpath if you pass their name directly. (E.g.: <b>"beans.xml"</b>)</i>
      */
-    private static void getFromXML() {
+    private static ApplicationContext getFromXML() {
         ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
         separate("WITH PROPERTY SETTING");
         // Get person in xml file
@@ -40,7 +46,10 @@ public class Main {
 
         // Get person in beans.xml file which is imported from other xml file (other-beans.xml)
         Person otherPerson = context.getBean("otherPerson", Person.class);
+//        Person otherPerson = context.getBean("sameOtherPerson", Person.class); // get with alias
         System.out.println(otherPerson);
+        Person anotherPerson = context.getBean("anotherPerson", Person.class);
+        System.out.println(anotherPerson);
 
         separate("NESTED OBJECTS");
 
@@ -61,6 +70,8 @@ public class Main {
         System.out.println(createdWithConstructor);
         Person createdWithConstructor2 = context.getBean("personCreatedWithConstructor2", Person.class);
         System.out.println(createdWithConstructor2);
+
+        return context;
     }
     //</editor-fold>
 }
