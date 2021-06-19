@@ -62,3 +62,7 @@ hs_err_pid*
 ##intellij idea files
 .idea/
 *.iml
+
+# H2 DB Files
+*.mv.db
+*.trace.db
